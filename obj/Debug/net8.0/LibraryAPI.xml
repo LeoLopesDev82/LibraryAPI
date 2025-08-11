@@ -1,0 +1,303 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LibraryAPI</name>
+    </assembly>
+    <members>
+        <member name="T:LibraryAPI.Controllers.AuthController">
+            <summary>
+            Controller responsible for authentication operations such as login and token generation.
+            <para>
+            NOTE: This controller currently contains a mock implementation for demonstration purposes only.
+            In a real-world scenario, authentication and JWT token generation should be handled by a dedicated authentication service.
+            </para>
+            </summary>
+        </member>
+        <member name="M:LibraryAPI.Controllers.AuthController.#ctor(Microsoft.Extensions.Options.IOptions{LibraryAPI.Models.Auth.JwtSettings})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LibraryAPI.Controllers.AuthController"/> class.
+            </summary>
+            <param name="jwtSettings">JWT configuration settings.</param>
+        </member>
+        <member name="M:LibraryAPI.Controllers.AuthController.Login(LibraryAPI.Models.DTOs.Auth.LoginRequestDto)">
+            <summary>
+            Mock login endpoint that validates hardcoded credentials and returns a JWT token.
+            <para>
+            This is only for testing and should be replaced with proper authentication logic calling an auth service.
+            </para>
+            </summary>
+            <param name="loginDto">The login request containing username and password.</param>
+            <returns>
+            A JWT token and its expiration date if authentication succeeds; 
+            otherwise, returns Unauthorized.
+            </returns>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BooksController.GetAll">
+            <summary>
+            Retrieves all books.
+            </summary>
+            <returns>A list of books in DTO format.</returns>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BooksController.GetById(System.Int32)">
+            <summary>
+            Retrieves a book by its ID.
+            </summary>
+            <param name="id">The ID of the book.</param>
+            <returns>The book in DTO format or 404 if not found.</returns>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BooksController.Create(LibraryAPI.Models.DTOs.Book.CreateBookDto)">
+            <summary>
+            Creates a new book.
+            </summary>
+            <param name="dto">The data for the book to create.</param>
+            <returns>The created book in DTO format with 201 status and Location header.</returns>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BooksController.Update(System.Int32,LibraryAPI.Models.DTOs.Book.UpdateBookDto)">
+            <summary>
+            Updates an existing book.
+            </summary>
+            <param name="id">The ID of the book to update.</param>
+            <param name="dto">The updated book data.</param>
+            <returns>The updated book in DTO format, or 404 if not found, or 400 if ID mismatch.</returns>
+        </member>
+        <member name="M:LibraryAPI.Controllers.BooksController.Delete(System.Int32)">
+            <summary>
+            Deletes a book by its ID.
+            </summary>
+            <param name="id">The ID of the book to delete.</param>
+            <returns>No content (204) if deleted, or 404 if not found.</returns>
+        </member>
+        <member name="M:LibraryAPI.Controllers.CategoriesController.GetAll">
+            <summary>
+            Retrieves all categories.
+            </summary>
+            <returns>List of category DTOs.</returns>
+        </member>
+        <member name="M:LibraryAPI.Controllers.CategoriesController.GetById(System.Int32)">
+            <summary>
+            Retrieves a specific category by its ID.
+            </summary>
+            <param name="id">Category ID.</param>
+            <returns>Category DTO if found; otherwise, NotFound.</returns>
+        </member>
+        <member name="M:LibraryAPI.Controllers.CategoriesController.Create(LibraryAPI.Models.DTOs.Category.CategoryCreateDto)">
+            <summary>
+            Creates a new category.
+            </summary>
+            <param name="dto">Category create DTO.</param>
+            <returns>The created category DTO.</returns>
+        </member>
+        <member name="M:LibraryAPI.Controllers.CategoriesController.Update(System.Int32,LibraryAPI.Models.DTOs.Category.CategoryUpdateDto)">
+            <summary>
+            Updates an existing category by ID.
+            </summary>
+            <param name="id">Category ID.</param>
+            <param name="dto">Category update DTO.</param>
+            <returns>The updated category DTO if successful; BadRequest or NotFound otherwise.</returns>
+        </member>
+        <member name="M:LibraryAPI.Controllers.CategoriesController.Delete(System.Int32)">
+            <summary>
+            Deletes a category by ID.
+            </summary>
+            <param name="id">Category ID.</param>
+            <returns>NoContent if deleted; NotFound if category does not exist.</returns>
+        </member>
+        <member name="T:LibraryAPI.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:LibraryAPI.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:LibraryAPI.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:LibraryAPI.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:LibraryAPI.Models.DTOs.Auth.LoginRequestDto">
+            <summary>
+            Represents the login request payload containing user credentials.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Auth.LoginRequestDto.Username">
+            <summary>
+            Gets or sets the username used for authentication.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Auth.LoginRequestDto.Password">
+            <summary>
+            Gets or sets the password used for authentication.
+            </summary>
+        </member>
+        <member name="T:LibraryAPI.Models.DTOs.Auth.LoginResponseDto">
+            <summary>
+            Represents the response returned after a successful authentication.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Auth.LoginResponseDto.Token">
+            <summary>
+            Gets or sets the generated JWT token.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Auth.LoginResponseDto.Expiration">
+            <summary>
+            Gets or sets the expiration date and time of the token.
+            </summary>
+        </member>
+        <member name="T:LibraryAPI.Models.DTOs.Book.BookDto">
+            <summary>
+            Data Transfer Object for returning book details.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.BookDto.Id">
+            <summary>
+            Unique identifier of the book.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.BookDto.Title">
+            <summary>
+            Title of the book.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.BookDto.Author">
+            <summary>
+            Author of the book.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.BookDto.Description">
+            <summary>
+            Optional description of the book.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.BookDto.PublishedAt">
+            <summary>
+            Date when the book was published, if known.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.BookDto.CategoryId">
+            <summary>
+            Identifier of the category this book belongs to.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.BookDto.CategoryName">
+            <summary>
+            Name of the category this book belongs to.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.BookDto.CreatedAt">
+            <summary>
+            Date when the book record was created.
+            </summary>
+        </member>
+        <member name="T:LibraryAPI.Models.DTOs.Book.CreateBookDto">
+            <summary>
+            Data Transfer Object used to create a new book.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.CreateBookDto.Title">
+            <summary>
+            Title of the book. Required. Maximum length: 100 characters.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.CreateBookDto.Author">
+            <summary>
+            Author of the book. Required. Maximum length: 100 characters.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.CreateBookDto.Description">
+            <summary>
+            Optional description of the book. Maximum length: 500 characters.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.CreateBookDto.PublishedAt">
+            <summary>
+            Date when the book was published, if known.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.CreateBookDto.CategoryId">
+            <summary>
+            Identifier of the category the book belongs to. Required.
+            </summary>
+        </member>
+        <member name="T:LibraryAPI.Models.DTOs.Book.UpdateBookDto">
+            <summary>
+            Data Transfer Object used to update an existing book.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.UpdateBookDto.Id">
+            <summary>
+            Identifier of the book. Required.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.UpdateBookDto.Title">
+            <summary>
+            Title of the book. Required. Maximum length: 100 characters.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.UpdateBookDto.Author">
+            <summary>
+            Author of the book. Required. Maximum length: 100 characters.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.UpdateBookDto.Description">
+            <summary>
+            Optional description of the book. Maximum length: 500 characters.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.UpdateBookDto.PublishedAt">
+            <summary>
+            Date when the book was published, if known.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Book.UpdateBookDto.CategoryId">
+            <summary>
+            Identifier of the category the book belongs to. Required.
+            </summary>
+        </member>
+        <member name="T:LibraryAPI.Models.DTOs.Category.CategoryCreateDto">
+            <summary>
+            Data Transfer Object used to create a new category.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Category.CategoryCreateDto.Name">
+            <summary>
+            Name of the category. Required. Maximum length: 50 characters.
+            </summary>
+        </member>
+        <member name="T:LibraryAPI.Models.DTOs.Category.CategoryDto">
+            <summary>
+            Data Transfer Object for returning category information.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Category.CategoryDto.Id">
+            <summary>
+            Unique identifier of the category.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Category.CategoryDto.Name">
+            <summary>
+            Name of the category.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Category.CategoryDto.CreatedAt">
+            <summary>
+            Date and time when the category was created.
+            </summary>
+        </member>
+        <member name="T:LibraryAPI.Models.DTOs.Category.CategoryUpdateDto">
+            <summary>
+            Data Transfer Object for updating an existing category.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Category.CategoryUpdateDto.Id">
+            <summary>
+            Unique identifier of the category to be updated.
+            </summary>
+        </member>
+        <member name="P:LibraryAPI.Models.DTOs.Category.CategoryUpdateDto.Name">
+            <summary>
+            Updated name of the category.
+            </summary>
+        </member>
+    </members>
+</doc>
