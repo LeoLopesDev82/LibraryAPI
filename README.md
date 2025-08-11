@@ -1,4 +1,4 @@
-##LibraryAPI
+## LibraryAPI
 
 A RESTful API for managing books and categories, built with ASP.NET Core 8.0.
 Includes JWT-based authentication and Swagger documentation.
